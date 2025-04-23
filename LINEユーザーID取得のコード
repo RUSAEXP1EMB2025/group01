@@ -1,0 +1,43 @@
+/**
+ * POSTリクエストを受け、JSONデータを解析してスプレッドシートに記録する
+ */
+function doPost(e) {
+  // ここに対象スプレッドシートのIDを入力する
+  const SPREADSHEET_ID = 'スプレッドシートID';  
+  // 「sheet」という名称のシートを取得する
+  const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName("左下のシート名");
+
+  // POSTされたデータ（JSON文字列）を解析
+  let jsonData;
+  try {
+    jsonData = JSON.parse(e.postData.contents);
+  } catch (error) {
+    Logger.log("JSONのパースに失敗しました: " + error);
+    return ContentService.createTextOutput("JSON parse error: " + error);
+  }
+  
+  // デバッグ用にログに記録
+  Logger.log(jsonData);
+  
+  // シートに記録する関数を呼び出す
+  setID(sheet, jsonData);
+  
+  return ContentService.createTextOutput("OK");
+}
+
+/**
+ * 受け取ったデータをスプレッドシートに記録する
+ * @param {Sheet} sheet - 書き込み対象のシートオブジェクト
+ * @param {Object} data - POSTリクエストで受信したJSONオブジェクト
+ */
+function setID(sheet, data) {
+  // 現在時刻を取得
+  const timestamp = new Date();
+  
+  // 例: data に userID と message が含まれている場合は、それぞれの列に記録。
+  // 含まれていない場合は、JSON全体の文字列を記録します。
+  
+  // JSON全体を文字列化して、1行に記録（必要に応じてカラム構成を変更してください）
+  sheet.appendRow([timestamp, data.events[0].source.userId, data.events[0].message.text]);
+  
+}
