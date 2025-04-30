@@ -30,7 +30,7 @@ function turnOnTVAndSetChannel() {
     });
     Logger.log("テレビの電源をオンにしました");
 
-    // 2. スプレッドシートのE列のを取得
+    // 2. スプレッドシートのE列を取得
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     const columnValues = sheet.getRange("E:E").getValues();
     let lastValue = null;
