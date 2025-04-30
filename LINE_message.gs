@@ -47,9 +47,44 @@ function doPost(e) { //LINEから停止,動作を受け取りトリガーを操�
     turnOnLight();
   } else if (userMessage === "オフ") {
     turnOffLight();
+  }else if (userMessage === "1チャンネルにして") {
+    writeNumber(1);
+    sendLineMessage("1チャンネルに設定しました"); 
+  }else if (userMessage === "2チャンネルにして") {
+    writeNumber(2);
+    sendLineMessage("2チャンネルに設定しました"); 
+  }else if (userMessage === "3チャンネルにして") {
+    writeNumber(3);
+    sendLineMessage("3チャンネルに設定しました"); 
+  }else if (userMessage === "4チャンネルにして") {
+    writeNumber(4);
+    sendLineMessage("4チャンネルに設定しました"); 
+  }else if (userMessage === "5チャンネルにして") {
+    writeNumber(5);
+    sendLineMessage("5チャンネルに設定しました"); 
+  }else if (userMessage === "6チャンネルにして") {
+    writeNumber(6);
+    sendLineMessage("6チャンネルに設定しました"); 
+  }else if (userMessage === "7チャンネルにして") {
+    writeNumber(7);
+    sendLineMessage("7チャンネルに設定しました"); 
+  }else if (userMessage === "8チャンネルにして") {
+    writeNumber(8);
+    sendLineMessage("8チャンネルに設定しました"); 
+  }else if (userMessage === "9チャンネルにして") {
+    writeNumber(9);
+    sendLineMessage("9チャンネルに設定しました"); 
+  }else if (userMessage === "10チャンネルにして") {
+    writeNumber(10);
+    sendLineMessage("10チャンネルに設定しました"); 
+  }else if (userMessage === "11チャンネルにして") {
+    writeNumber(11);
+    sendLineMessage("11チャンネルに設定しました"); 
+  }else if (userMessage === "12チャンネルにして") {
+    writeNumber(12);
+    sendLineMessage("12チャンネルに設定しました"); 
   }
 }
-
 
 
 
