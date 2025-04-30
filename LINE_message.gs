@@ -1,5 +1,5 @@
 const LINE_ACCESS_TOKEN = PropertiesService.getScriptProperties().getProperty('LINE_ACCESS_TOKEN');
-const userId = "ラインのユーザーID"; // 送信先ユーザーのID
+const userId = "ラインのユーザーID"; // **変えるとこ** 送信先ユーザーのID
 
 
 function sendLineMessage(message) {
