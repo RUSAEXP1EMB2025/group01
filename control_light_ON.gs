@@ -1,6 +1,6 @@
 // 照明をオンにする関数
 function turnOnLight() {
-  const signalId = "シグナルID"; // 事前に控えたSignal IDをここに設定
+  const signalId = "シグナルID"; // ＊＊変えるとこ＊＊ 事前に控えたSignal IDをここに設定
   const endpoint = "https://api.nature.global/1/signals/" + signalId + "/send"; // Signalを送信するAPIエンドポイント
 
   const options = {
