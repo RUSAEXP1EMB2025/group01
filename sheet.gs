@@ -1,4 +1,4 @@
-const SPREADSHEET_ID = '自分のスプレッドシートID'
+const SPREADSHEET_ID = '自分のスプレッドシートID' // ＊＊変えるとこ＊＊
 
 function getSheet(name) {
   const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
