@@ -52,7 +52,7 @@ function doPost(e) { //LINEから停止,動作を受け取りトリガーを操�
     sendLineMessage("recordSensorData() の動作を再開しました。"); // 確認メッセージを送信
     startRecordSensorData(); // トリガーを再開
   } else if (userMessage === "オン" && getTVState() == 0) {
-    turnOnTV();
+    turnOnTVAndSetChannel()
     sendLineMessage("テレビの電源をつけました"); 
   } else if (userMessage === "オン" && getTVState() == 1) {
     sendLineMessage("テレビの電源はすでについています"); 
