@@ -1,6 +1,5 @@
 const LINE_ACCESS_TOKEN = PropertiesService.getScriptProperties().getProperty('LINE_ACCESS_TOKEN');
-const userId = "ラインのユーザーID"; // **変えるとこ** 送信先ユーザーのID
-
+const userId = "Ubf80eafebadb14a5401d67f96843ee81"; // 送信先ユーザーのID
 
 function sendLineMessage(message) {
   const url = "https://api.line.me/v2/bot/message/push";
@@ -47,9 +46,18 @@ function doPost(e) { //LINEから停止,動作を受け取りトリガーを操�
     turnOnLight();
   } else if (userMessage === "オフ") {
     turnOffLight();
+  }else if (userMessage === "家を出ました") {
+    sendLineMessage("テレビの電源は　ON OFF　どちらですか？");
+  }else if (userMessage === "ONだったよ") {
+    sendLineMessage("ONに設定しました");
+    tv_current(1)
+  }else if (userMessage === "OFFだったよ") {
+    sendLineMessage("OFFに設定しました");
+    tv_current(0)
   }else if (userMessage === "1チャンネルにして") {
     writeNumber(1);
     sendLineMessage("1チャンネルに設定しました"); 
+    turnOnTVAndSetChannel()
   }else if (userMessage === "2チャンネルにして") {
     writeNumber(2);
     sendLineMessage("2チャンネルに設定しました"); 
@@ -85,6 +93,3 @@ function doPost(e) { //LINEから停止,動作を受け取りトリガーを操�
     sendLineMessage("12チャンネルに設定しました"); 
   }
 }
-
-
-
