@@ -1,0 +1,25 @@
+// テレビをオンにする関数
+function turnOnTV() {
+  const signalId = "＊＊あなたのテレビ電源Signal IDをここに記入＊＊"; // テレビのSignal IDを設定
+  const endpoint = "https://api.nature.global/1/signals/" + signalId + "/send"; // Signalを送信するAPIエンドポイント
+
+  const options = {
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer " + REMO_ACCESS_TOKEN // アクセストークンを設定
+    }
+  };
+
+  try {
+    // APIリクエストを送信してテレビをオン
+    const response = UrlFetchApp.fetch(endpoint, options);
+    Logger.log("テレビをオンにしました: " + response.getContentText());
+
+    sendLineMessage("📺📺📺📺📺\nテレビがオンになりました\n📺📺📺📺📺"); // LINE通知を送信
+
+    recordTVState(true); // テレビの状態を記録（任意関数）
+
+  } catch (error) {
+    Logger.log("テレビの制御に失敗しました: " + error.message);
+  }
+}
