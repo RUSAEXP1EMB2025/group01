@@ -67,3 +67,18 @@ function turnOnTVAndSetChannel() {
     Logger.log("テレビ制御エラー: " + error.message);
   }
 }
+
+function tv_current(result) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const aColumnValues = sheet.getRange("A:A").getValues();
+
+  let aLastRow = 0;
+  for (let i = 0; i < aColumnValues.length; i++) {
+    if (aColumnValues[i][0] !== "") {
+      aLastRow = i + 1;
+    }
+  }
+
+  const valueToWrite = (result === 1) ? 1 : 0;
+  sheet.getRange(aLastRow, 6).setValue(valueToWrite);
+}
