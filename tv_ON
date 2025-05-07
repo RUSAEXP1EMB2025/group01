@@ -7,7 +7,6 @@ function turnOnTVAndSetChannel() {
 
   // チャンネル番号ごとのシグナルIDマップ（各数字に対するシグナル）
   const CHANNEL_SIGNAL_IDS = {
-    "0": "signal_id_for_0",
     "1": "signal_id_for_1",
     "2": "signal_id_for_2",
     "3": "signal_id_for_3",
@@ -29,6 +28,7 @@ function turnOnTVAndSetChannel() {
       "headers": headers
     });
     Logger.log("テレビの電源をオンにしました");
+    Utilities.sleep(7000);
 
     // 2. スプレッドシートのE列を取得
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
