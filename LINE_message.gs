@@ -61,6 +61,14 @@ function doPost(e) { //LINEから停止,動作を受け取りトリガーを操�
   }else if (userMessage === "オフ" && getTVState() == 1) {
     turnOffTV();
     endLineMessage("テレビの電源を消しました"); 
+  }else if (userMessage === "家を出ました") {
+    sendLineMessage("テレビの電源は　ON OFF　どちらですか？");
+  }else if (userMessage === "ONだったよ") {
+    sendLineMessage("ONに設定しました");
+    tv_current(1)
+  }else if (userMessage === "OFFだったよ") {
+    sendLineMessage("OFFに設定しました");
+    tv_current(0)
   }else if (userMessage === "1チャンネルにして") {
     writeNumber(1);
     sendLineMessage("1チャンネルに設定しました"); 
