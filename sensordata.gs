@@ -37,11 +37,23 @@ function recordSensorData() {
     
     setSensorData(arg, lastSensorData + 1); // スプレッドシートに記録
     Logger.log("データ記録成功: " + new Date());
-
+    // F列の最終行の値を取得して、一つ下にコピー
+    const fColumnValues = sheet.getRange("F:F").getValues();
+    let fLastRow = 0;
+    for (let i = 0; i < fColumnValues.length; i++) {
+      if (fColumnValues[i][0] !== "") {
+      fLastRow = i + 1;
+  }
+}
+if (fLastRow > 0) {
+  const lastFValue = fColumnValues[fLastRow - 1][0];
+  sheet.getRange(fLastRow + 1, 6).setValue(lastFValue); // F列 = 6列目
+}
 
   } catch (error) {
     Logger.log("エラー発生: データ取得または記録に失敗しました - " + error.message);
   }
+
 }
 
 
@@ -91,5 +103,3 @@ function getLastValidValue(sheet, startRow, column) {
   
   return 0; // すべて空だった場合のデフォルト値
 }
-
-
